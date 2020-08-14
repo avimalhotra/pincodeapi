@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Node JS API</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/api">Api</a>
+        </nav>
+        <form action="/pincode">
+        <label> Pincode: <input type="search" name="pincode" required pattern="^[\d]{6}$"></label>    <button>Search</button>
+    </form>
+    <h2>Pincode result for {{data[0].pincode}}</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>officeName</th>
+                <th>Pincode</th>
+                <th>Taluk</th>
+                <th>District </th>
+                <th>State</th>
+               
+                
+            </tr>
+         </thead>
+         <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{i.officeName}}</td>
+                    <td>{{i.pincode}}</td>
+                    <td>{{i.taluk}}</td>
+                    <td>{{i.districtName}}</td>
+                    <td>{{i.stateName}}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+    
+</body>
+</html>

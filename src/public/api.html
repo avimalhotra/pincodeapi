@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX API</h1>
+    <input type="tel" maxlength="6" pattern="^[1-9]{1}[0-9]{5}$"> <span></span>
+    
+    <ol></ol>
+<script>
+
+document.querySelector("input").onkeyup=function(){
+    document.querySelector("ol").innerHTML="";
+    var xhr=new XMLHttpRequest();
+        
+    xhr.open("post","http://127.0.0.1:3000/getapi");
+    xhr.send("pin:"+ this.value);
+
+    xhr.onreadystatechange=function(){
+    
+        if( this.readyState==0 || this.readyState==1 || this.readyState==2 ||   this.readyState==3){
+            document.querySelector("span").innerHTML="loading data";
+        }
+        else if(this.readyState==4 && this.status==200){
+            var data=this.response;
+            
+            data=JSON.parse(data);
+            
+            data.forEach(function(i){
+                document.querySelector("ol").innerHTML+="<li>"+ i.officeName+"</li>"
+            })
+            
+    
+        }
+        else{
+            document.querySelector("span").innerHTML="Error Found";
+        }
+    }
+}
+</script>
+</body>
+</html>

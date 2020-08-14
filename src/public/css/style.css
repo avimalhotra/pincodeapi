@@ -1,0 +1,4 @@
+*{ margin:0; box-sizing: border-box;}
+body{ font-family: sans-serif;}
+.container{ width: 1200px; margin: auto;}
+table, td, th{ border: 1px solid;}
